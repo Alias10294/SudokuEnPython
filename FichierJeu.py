@@ -28,7 +28,6 @@ class Jeu:
         self.menuRejouer.affichageBouton.texteCouleur = couleur
         self.menuCharger.affichageBouton.texteCouleur = couleur
         self.menuOptions.affichageBouton.texteCouleur = couleur
-        self.menuCouleur.affichageBouton.texteCouleur = couleur
 
     def Jouer(self) -> None:
         """
@@ -57,20 +56,20 @@ class Jeu:
                 case 21: # Choisir la couleur
                     choixJeu = self.menuCouleur.Jouer(self.fenetre, self.tailleFenetre)
                 case 211: # Couleur bleue
-                    self.ModifierCouleur((150, 150, 150))
-                    choixJeu = 2
+                    self.ModifierCouleur((200, 200, 200))
+                    choixJeu = 3
                 case 212: # Couleur verte
-                    self.ModifierCouleur((71, 153, 31))
-                    choixJeu = 2
+                    self.ModifierCouleur((0, 255, 0))
+                    choixJeu = 3
                 case 213: # Couleur jaune
-                    self.ModifierCouleur((230, 191, 0))
-                    choixJeu = 2
+                    self.ModifierCouleur((255, 255, 0))
+                    choixJeu = 3
                 case 214: # Couleur orange
-                    self.ModifierCouleur((217, 108, 0))
-                    choixJeu = 2
+                    self.ModifierCouleur((255, 128, 0))
+                    choixJeu = 3
                 case 215: # Couleur violette
-                    self.ModifierCouleur((91, 17, 166))
-                    choixJeu = 2
+                    self.ModifierCouleur((255, 0, 255))
+                    choixJeu = 3
                 case 3: # Quitter le jeu
                     choixJeu = -1
                 case 51: # Finir une partie gagnée
