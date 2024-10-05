@@ -191,11 +191,11 @@ class Partie:
             for evenement in event.get():
                 if evenement.type == QUIT: # Quitter le jeu avec la croix
                     fin = True
-                    choixSortie = 4
+                    choixSortie = 3
                 if evenement.type == KEYDOWN: 
                     if evenement.key == K_ESCAPE: # Quitter le jeu avec Echap
                         fin = True
-                        choixSortie = 4
+                        choixSortie = 3
                     if evenement.key in touchesClavierPossibles: # Entrer un chiffre
                         numeroEntre = self.grille.numeros[touchesClavierPossibles.index(evenement.key)]
                         if self.modeEdition:
