@@ -52,27 +52,25 @@ class Jeu:
                 case 13: # Choix de taille de grille, taille 4x4
                     choixJeu = self.menuDifficulte4x4.Jouer(self.fenetre, self.tailleFenetre)
                 case 2: # Charger une partie, choisir la partie
-                    choixJeu = self.menuCharger.Jouer(self.fenetre, self.tailleFenetre)
-                case 3: # Choisir les options
                     choixJeu = self.menuOptions.Jouer(self.fenetre, self.tailleFenetre)
-                case 31: # Choisir la couleur
+                case 21: # Choisir la couleur
                     choixJeu = self.menuCouleur.Jouer(self.fenetre, self.tailleFenetre)
-                case 311: # Couleur bleue
-                    self.ModifierCouleur((0, 0, 255))
+                case 211: # Couleur bleue
+                    self.ModifierCouleur((200, 200, 200))
                     choixJeu = 3
-                case 312: # Couleur verte
+                case 212: # Couleur verte
                     self.ModifierCouleur((0, 255, 0))
                     choixJeu = 3
-                case 313: # Couleur jaune
+                case 213: # Couleur jaune
                     self.ModifierCouleur((255, 255, 0))
                     choixJeu = 3
-                case 314: # Couleur orange
+                case 214: # Couleur orange
                     self.ModifierCouleur((255, 128, 0))
                     choixJeu = 3
-                case 315: # Couleur violette
+                case 215: # Couleur violette
                     self.ModifierCouleur((255, 0, 255))
                     choixJeu = 3
-                case 4: # Quitter le jeu
+                case 3: # Quitter le jeu
                     choixJeu = -1
                 case 51: # Finir une partie gagnée
                     self.menuRejouer.titreTexte = "PARTIE GAGNEE"
@@ -102,12 +100,12 @@ class Jeu:
         """
         self.tailleFenetre = (1536, 864)
         self.fenetre = display.set_mode(self.tailleFenetre)
-        self.menuDepart = MenuABoutons(["JOUER", "CHARGER", "OPTIONS", "QUITTER"], [1, 2, 3, 4], "SUDOKU")
+        self.menuDepart = MenuABoutons(["JOUER", "OPTIONS", "QUITTER"], [1, 2, 3, ], "SUDOKU")
         self.menuTailleGrille = MenuABoutons(["2 X 2", "3 X 3", "4 X 4"], [11, 12, 13], "")
         self.menuDifficulte3x3 = MenuABoutons(["FACILE", "MOYEN", "DIFFICILE"], [121, 122, 123], "")
         self.menuDifficulte4x4 = MenuABoutons(["FACILE", "MOYEN", "DIFFICILE", "EXPERT"], [131, 132, 133, 134], "")
         self.menuRejouer = MenuABoutons(["REJOUER", "DEPART", "QUITTER"], [1, 0, 4], "")
         self.menuCharger = MenuABoutons([""], [4], "CHARGER")
-        self.menuOptions = MenuABoutons(["COULEUR", "DEPART"], [31, 0], "OPTIONS")
-        self.menuCouleur = MenuABoutons(["BLEU", "VERT", "JAUNE", "ORANGE", "VIOLET"], [311, 312, 313, 314, 315], "COULEURS")
+        self.menuOptions = MenuABoutons(["COULEUR", "DEPART"], [21, 0], "OPTIONS")
+        self.menuCouleur = MenuABoutons(["GRIS", "VERT", "JAUNE", "ORANGE", "VIOLET"], [211, 212, 213, 214, 215], "COULEURS")
         self.couleurActuelle = (200, 200, 200)
