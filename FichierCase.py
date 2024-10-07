@@ -1,6 +1,9 @@
 # IMPORTS
 
 class Case:
+    """
+    Une case de jeu de sudoku.
+    """
     # CHAMPS
     numero:str
     vraiNumero:str
@@ -10,14 +13,19 @@ class Case:
     # METHODES
     def Initialiser(self, numero:str = "0") -> None:
         """
-        Initialise le numero et le vrai numero de la case.
+        [ Entree(s): numero:str = "0"]
+        [ Sortie(s): N/A ] 
+        -> Initialise le numero et le vrai numero de la case.
         """
         self.numero = numero
         self.vraiNumero = numero
     
     def Vider(self) -> str:
         """
-        Retire le numero de la case, et retourne le numero retire.
+        [ Entree(s): N/A ]
+        [ Sortie(s): numeroRetire:str ]
+        -> Retire le numero de la case.
+        Retourne le numero retire.
         """
         numeroRetire:str
 
@@ -27,9 +35,11 @@ class Case:
         return numeroRetire
 
     # CONSTRUCTEURS
-    def __init__(self, numero:str = "0") -> None:
+    def __init__(self, numero:str = "0"):
         """
-        Une case de grille de sudoku.
+        [ Entree(s): numero:str = "0" ]
+        [ Sortie(s): :Case ]
+        -> Une case de grille de sudoku, avec 0 en numero par defaut.
         """
         self.numero = numero
         self.vraiNumero = numero

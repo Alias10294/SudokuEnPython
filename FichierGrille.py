@@ -4,6 +4,9 @@ from random import shuffle
 from math import sqrt
 
 class Grille:
+    """
+    Une grille de sudoku.
+    """
     # CHAMPS
     sousTaille:int
     taille:int
@@ -13,7 +16,9 @@ class Grille:
     # METHODES
     def NumeroPossibleLigne(self, numero:str, i:int) -> bool:
         """
-        Retourne True si le numero 'numero' peut etre entre dans la ligne 'i', sinon False.
+        [ Entree(s): numero:str, i:int ]
+        [ Sortie(s): resultat:bool ]
+        -> Retourne True si le numero 'numero' peut etre entre dans la ligne 'i', sinon False.
         """
         case:Case
         resultat:bool
@@ -27,7 +32,9 @@ class Grille:
 
     def NumeroPossibleColonne(self, numero:str, j:int) -> bool:
         """
-        Retourne True si le numero 'numero' peut etre entre dans la colonne 'j', sinon False.
+        [ Entree(s): numero:str, j:int ]
+        [ Sortie(s): resultat:bool ]
+        -> Retourne True si le numero 'numero' peut etre entre dans la colonne 'j', sinon False.
         """
         i:int
         resultat:bool
@@ -41,7 +48,9 @@ class Grille:
 
     def NumeroPossibleSousGrille(self, numero:str, i:int, j:int) -> bool:
         """
-        Retourne True si le numero 'numero' peut etre entre dans la sous-grille de la case de coordonnees 'i' et 'j', sinon False.
+        [ Entree(s): numero:str, i:int, j:int ]
+        [ Sortie(s): resultat:bool ]
+        -> Retourne True si le numero 'numero' peut etre entre dans la sous-grille de la case de coordonnees 'i' et 'j', sinon False.
         """
         resultat:bool
         ligneDebut:int
@@ -63,7 +72,9 @@ class Grille:
 
     def NumeroPossible(self, numero:str, i:int, j:int) -> bool:
         """
-        Retourne True si le numero 'numero' peut etre entre dans la case de coordonnees 'i' et 'j', sinon False.
+        [ Entree(s): numero:str, i:int, j:int ]
+        [ Sortie(s): resultat:bool ]
+        -> Retourne True si le numero 'numero' peut etre entre dans la case de coordonnees 'i' et 'j', sinon False.
         """
         resultatLigne:bool
         resultatColonne:bool
@@ -78,11 +89,13 @@ class Grille:
     
     def TrouverCoordonneesCaseVide(self) -> list:
         """
-        Retourne les coordonnees 'i' et 'j' de la premiere case sans numero dans le tableau, sinon None.
+        [ Entree(s): N/A ]
+        [ Sortie(s): resultat:list ]
+        -> Retourne les coordonnees 'i' et 'j' de la premiere case sans numero dans le tableau, sinon None.
         """
         i:int
         j:int
-        resultat:tuple
+        resultat:list
 
         resultat = []
         for i in range(self.taille):
@@ -93,7 +106,10 @@ class Grille:
 
     def SeRemplir(self) -> bool:
         """
-        Remplit les cases selon les regles du sudoku.
+        [ Entree(s): N/A ]
+        [ Sortie(s): resultat:bool ]
+        -> Remplit les cases selon les regles du sudoku.
+        Retourne True si la grille a pu être remplie, False sinon.
         """
         resultat:bool
         coordonneesCase:list
@@ -124,7 +140,9 @@ class Grille:
     
     def AfficherConsole(self) -> None:
         """
-        Affiche les numeros des cases dans la console.
+        [ Entree(s): N/A ]
+        [ Sortie(s): N/A ]
+        -> Affiche les numeros des cases dans la console.
         """
         ligneHorizontale:str
         i:int
@@ -147,7 +165,9 @@ class Grille:
     
     def NombreSolutions(self) -> int:
         """
-        Retourne le nombre de solutions differentes à la grille.
+        [ Entree(s): N/A ]
+        [ Sortie(s): resultat:int ]
+        -> Retourne le nombre de solutions differentes à la grille.
         """
         resultat:int
         coordonneesCase:list
@@ -175,13 +195,17 @@ class Grille:
     
     def EstUnique(self) -> bool:
         """
-        Retourne True si il n'y a qu'une seule solution à la grille de sudoku actuelle, sinon False.
+        [ Entree(s): N/A ]
+        [ Sortie(s): :bool ]
+        -> Retourne True si il n'y a qu'une seule solution à la grille de sudoku actuelle, sinon False.
         """
         return self.NombreSolutions() == 1
 
     def NombresARetirer(self, difficulte:int) -> int:
         """
-        Retourne le nombre de chiffres a retirer selon la difficulte 'difficulte' et la taille de la grille.
+        [ Entree(s): difficulte:int ]
+        [ Sortie(s): nombreARetirer:int ]
+        -> Retourne le nombre de chiffres a retirer selon la difficulte 'difficulte' et la taille de la grille.
         """
         nombreARetirer:int
 
@@ -199,7 +223,9 @@ class Grille:
     
     def RetirerNombres(self, difficulte:int) -> None:
         """
-        Vide des numeros des cases, en gardant la solution de la grille unique et selon la difficulte 'difficulte'.
+        [ Entree(s): difficulte:int ]
+        [ Sortie(s): N/A ]
+        -> Vide des numeros des cases, en gardant la solution de la grille unique et selon la difficulte 'difficulte'.
         """
         coordonnees:list
         i:int
@@ -229,10 +255,11 @@ class Grille:
                 break
 
     # CONSTRUCTEURS
-    def __init__(self, identifiant:str) -> None:
+    def __init__(self, identifiant:str):
         """
-        Une grille de sudoku, avec une taille de sous-grille 'sousTaille' variable (taille de la grille: 'sousTaille' * 'sousTaille').
-
+        [ Entree(s): identifiant:str ]
+        [ Sortie(s): :Grille ]
+        -> Une grille de sudoku, avec une taille de sous-grille 'sousTaille' variable (taille de la grille: 'sousTaille' * 'sousTaille').
         """
         i:int
         j:int

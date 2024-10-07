@@ -4,6 +4,9 @@ from pygame import display, draw, Rect, image, font, Surface
 from FichierAffichageHorloge import AffichageHorloge
 
 class Horloge:
+    """
+    Une horloge de jeu de sudoku.
+    """
     # CHAMPS
     depart:float
     debut:float
@@ -13,13 +16,17 @@ class Horloge:
     # METHODES
     def MettreAJourTemps(self) -> None:
         """
-        Met à jour le temps actuel de l'horloge.
+        [ Entree(s): N/A ]
+        [ Sortie(s): N/A ]
+        -> Met à jour le temps actuel de l'horloge.
         """
         self.actuel = self.depart + time.time() - self.debut
     
     def ChargerCircs(self, fenetre:display) -> None:
         """
-        Charge les bords circulaires de l'affichage de l'horloge.
+        [ Entree(s): fenetre:display ]
+        [ Sortie(s): N/A ]
+        -> Charge les bords circulaires de l'affichage de l'horloge.
         """
         centreCercleY:int
         centreCercleX:int
@@ -36,6 +43,8 @@ class Horloge:
     
     def ChargerRect(self, fenetre:display) -> None:
         """
+        [ Entree(s): fenetre:display ]
+        [ Sortie(s): N/A ]
         Charge le rectangle central de l'affichage de l'horloge.
         """
         positionX:int
@@ -64,6 +73,8 @@ class Horloge:
     
     def ChargerLogo(self, fenetre:display) -> None:
         """
+        [ Entree(s): fenetre:display ]
+        [ Sortie(s): N/A ]
         Charge le logo de l'affichage de l'horloge.
         """
         logo:Surface
@@ -79,6 +90,8 @@ class Horloge:
     
     def ChargerTemps(self, fenetre:display) -> None:
         """
+        [ Entree(s): fenetre:display ]
+        [ Sortie(s): N/A ]
         Charge le temps à afficher.
         """
         temps:float
@@ -102,6 +115,8 @@ class Horloge:
         
     def Charger(self, fenetre:display) -> None:
         """
+        [ Entree(s): fenetre:display ]
+        [ Sortie(s): N/A ]
         Charge l'horloge sur la fenetre.
         """
         self.ChargerCircs(fenetre)
@@ -113,7 +128,9 @@ class Horloge:
     # CONSTRUCTEURS
     def __init__(self, depart:float = 0., affichageHorloge:AffichageHorloge = AffichageHorloge()):
         """
-        Une horloge avec un temps de depart et des donnees d'affichage.
+        [ Entree(s): depart:float = 0., affichageHorloge:AffichageHorloge = AffichageHorloge() ]
+        [ Sortie(s): :Horloge ]
+        -> Une horloge avec un temps de depart et des donnees d'affichage.
         """
         self.depart = depart
         self.debut = time.time()

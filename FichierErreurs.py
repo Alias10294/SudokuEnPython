@@ -3,6 +3,9 @@ from FichierAffichageErreurs import AffichageErreurs
 from pygame import display, draw, font
 
 class Erreurs:
+    """
+    Gere les erreurs dans le jeu de sudoku.
+    """
     # CHAMPS
     affichage:AffichageErreurs
     nbErreurs:int
@@ -13,7 +16,9 @@ class Erreurs:
     # METHODES
     def Charger(self, fenetre:display) -> None:
         """
-        Charge le nombre d'erreurs a l'ecran.
+        [ Entree(s): fenetre:display ]
+        [ Sortie(s): N/A ]
+        -> Charge le module des erreurs a l'ecran.
         """
         draw.circle(fenetre, self.affichage.couleur, self.affichage.centre, self.affichage.rayon)
         draw.circle(fenetre, self.affichage.bordCouleur, self.affichage.centre, self.affichage.rayon, self.affichage.bordEpaisseur)
@@ -26,9 +31,12 @@ class Erreurs:
         textePosition[1] -= self.affichage.policeTaille * 4 / 5
         fenetre.blit(texte, textePosition)
 
-    def __init__(self, difficulte:int, nbErreurs = 0, affichage:AffichageErreurs = AffichageErreurs()) -> None:
+    def __init__(self, difficulte:int, nbErreurs:int = 0, affichage:AffichageErreurs = AffichageErreurs()):
         """
-        Represente les erreurs faites dans une partie de sudoku.
+        [ Entree(s): difficulte:int, nbErreurs:int = 0, affichage:AffichageErreurs = AffichageErreurs()]
+        [ Sortie(s): :Erreurs ]
+        -> Represente les erreurs faites dans une partie de sudoku, prenant en compte :
+        la difficulte, le nombre d'erreurs de depart et les specificites d'affichage.
         """
         self.affichage = affichage
         self.nbErreurs = nbErreurs
