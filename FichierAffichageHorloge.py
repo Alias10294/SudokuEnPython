@@ -1,6 +1,10 @@
 # IMPORTS 
 
 class AffichageHorloge:
+    """
+    Contient les valeurs par défaut d'affichage pour la classe Horloge.
+    """
+    # CHAMPS
     centre:tuple = (1339, 98)
     taille:list = [300, 80]
     couleur:tuple = (255, 255, 255)
