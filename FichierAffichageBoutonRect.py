@@ -1,6 +1,9 @@
 # IMPORTS
 
 class AffichageBoutonRect:
+    """
+    Contient les valeurs par défaut d'affichage pour la classe BoutonRect.
+    """
     # CHAMPS
     taille:list = [400, 80]
     couleur:tuple = (255, 255, 255)
