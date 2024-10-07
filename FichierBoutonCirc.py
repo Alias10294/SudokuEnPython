@@ -4,6 +4,9 @@ from pygame import image, display, draw, transform
 from math import sqrt
 
 class BoutonCirc:
+    """
+    Un bouton circulaire.
+    """
     # CHAMPS
     centre:tuple
     affichage:AffichageBoutonCirc
@@ -13,7 +16,10 @@ class BoutonCirc:
     # METHODES
     def Interagit(self, positionSouris:tuple) -> bool:
         """
-        Verifie si la souris de position 'positionSouris' se trouve sur le bouton.
+        [ Entree(s): positionSouris:tuple ]
+        [ Sortie(s): :bool ]
+        -> Gere l'interaction avec le bouton.
+        Retourne True si la souris est sur le bouton, False sinon.
         """
         distance:int
 
@@ -22,13 +28,18 @@ class BoutonCirc:
 
     def MettreAJourCoeffInteraction(self, positionSouris:tuple) -> float:
         """
-        Met a jour le coeffcient de taille pour l'interaction selon la position de la souris 'positionSouris'.
+        [ Entree(s): positionSouris:tuple ]
+        [ Sortie(s): :float ]
+        -> Le bouton est agrandi lorsque la souris passe dessus.
+        Retourne le coefficient a appliquer a la taille du bouton pour l'interaction.
         """
         return 1 + int(self.Interagit(positionSouris) or self.active) * self.affichage.coeffInteraction
 
     def Charger(self, fenetre:display, positionSouris:tuple) -> None:
         """
-        Charge le bouton dans la fenetre 'fenetre', selon si la souris de position 'positionSouris' est sur le bouton.
+        [ Entree(s): fenetre:display, positionSouris:tuple ]
+        [ Sortie(s): N/A ]
+        -> Charge le bouton a l'ecran, en prenant en compte la position de la souris pour l'interaction.
         """
         coeffInteraction:float
 
@@ -42,9 +53,11 @@ class BoutonCirc:
         fenetre.blit(logo, positionLogo)
 
     # CONSTRUCTEURS
-    def __init__(self, centre:tuple, logo:image) -> None:
+    def __init__(self, centre:tuple, logo:image):
         """
-        Un bouton circulaire.
+        [ Entree(s): centre:tuple, logo:image ]
+        [ Sortie(s): :BoutonCirc ]
+        -> Un bouton circulaire, avec une position centrale et un logo donne.
         """
         self.centre = centre
         self.affichage = AffichageBoutonCirc()

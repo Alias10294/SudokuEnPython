@@ -5,9 +5,11 @@ from FichierBoutonRect import BoutonRect
 from FichierAffichageTitre import AffichageTitre
 
 class MenuABoutons:
+    """
+    Un menu a boutons rectangulaires customisable.
+    """
     # CHAMPS
     fond:Surface
-    affichageBouton:AffichageBoutonRect
     texteBoutons:list
     nombreBoutons:int
     espaceEntreBoutons:int
@@ -17,9 +19,11 @@ class MenuABoutons:
     titreTexte:str
 
     # METHODES
-    def CreerBoutons(self, tailleFenetre) -> None:
+    def CreerBoutons(self, tailleFenetre:tuple) -> None:
         """
-        Cree tous les boutons du menu.
+        [ Entree(s): tailleFenetre:tuple ]
+        [ Sortie(s): N/A ]
+        -> Cree tous les boutons du menu.
         """
         boutonPositionX:int
         hauteurBoutonsMoitie:int
@@ -30,19 +34,21 @@ class MenuABoutons:
 
         self.boutons = []
 
-        boutonPositionX = (tailleFenetre[0] - self.affichageBouton.taille[0]) // 2
+        boutonPositionX = (tailleFenetre[0] - AffichageBoutonRect().taille[0]) // 2
 
-        hauteurBoutonsMoitie = (self.nombreBoutons / 2) * self.affichageBouton.taille[1] # Espace a retirer pour la taille des boutons
+        hauteurBoutonsMoitie = (self.nombreBoutons / 2) * AffichageBoutonRect().taille[1] # Espace a retirer pour la taille des boutons
         espaceTotalBoutonsMoitie = (self.nombreBoutons - 1) * self.espaceEntreBoutons / 2 # Espace a retirer pour l'espace entre les boutons
         boutonPositionY = tailleFenetre[1] / 2 - hauteurBoutonsMoitie - espaceTotalBoutonsMoitie
         for b in range(self.nombreBoutons):
             boutonPosition = (boutonPositionX, boutonPositionY)
-            self.boutons.append(BoutonRect(boutonPosition, self.affichageBouton, self.texteBoutons[b]))
-            boutonPositionY += self.affichageBouton.taille[1] + self.espaceEntreBoutons
+            self.boutons.append(BoutonRect(boutonPosition, self.texteBoutons[b]))
+            boutonPositionY += AffichageBoutonRect().taille[1] + self.espaceEntreBoutons
     
     def ChargerTitre(self, fenetre:display) -> None:
         """
-        Charge le titre du menu.
+        [ Entree(s): fenetre:display ]
+        [ Sortie(s): N/A ]
+        -> Charge le titre du menu.
         """
         police:font.Font
         texte:Surface
@@ -55,7 +61,9 @@ class MenuABoutons:
 
     def Charger(self, fenetre:display, positionSouris:tuple) -> None:
         """
-        Charger le menu dans la fenetre 'fenetre' selon la position de la souris 'positionSouris'.
+        [ Entree(s): fenetre:display, positionSouris:tuple ]
+        [ Sortie(s): N/A ]
+        -> Charge le menu dans la fenetre 'fenetre' selon la position de la souris 'positionSouris'.
         """
         bouton:BoutonRect
 
@@ -66,9 +74,11 @@ class MenuABoutons:
             bouton.Charger(fenetre, positionSouris) # Boutons du menu
         display.update()
     
-    def Jouer(self, fenetre, tailleFenetre) -> int:
+    def Jouer(self, fenetre:display, tailleFenetre:tuple) -> int:
         """
-        Permet de jouer le menu.
+        [ Entree(s): fenetre:display, tailleFenetre:tuple ]
+        [ Sortie(s): choixSortie:int ]
+        -> Permet de jouer le menu.
         """
         fin:bool
         evenement:event
@@ -106,12 +116,13 @@ class MenuABoutons:
         return choixSortie
 
     # CONSTRUCTEURS
-    def __init__(self, texteBoutons:list, choixSorties:list, titreTexte):
+    def __init__(self, texteBoutons:list, choixSorties:list, titreTexte:str):
         """
-        Un menu comprenant des boutons et des sorties choisies.
+        [ Entree(s): texteBoutons:list, choixSorties:list, titreTexte:str ]
+        [ Sortie(s): :MenuABoutons ]
+        -> Un menu comprenant des boutons et des sorties choisies.
         """
         self.fond = image.load("fond.png")
-        self.affichageBouton = AffichageBoutonRect()
         self.texteBoutons = texteBoutons
         self.nombreBoutons = len(texteBoutons)
         self.espaceEntreBoutons = 50
