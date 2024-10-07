@@ -1,6 +1,10 @@
 # IMPORTS
 
 class AffichageErreurs:
+    """
+    Contient les valeurs par défaut d'affichage pour la classe Erreurs.
+    """
+    # CHAMPS
     centre:tuple = (1339, 432)
     rayon:int = 140
     couleur:tuple = (255, 255, 255)

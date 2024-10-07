@@ -11,7 +11,10 @@ class BoutonRect:
     # METHODES
     def Interagit(self, positionSouris:tuple) -> bool:
         """
-        Verifie si la souris de position 'positionSouris' se trouve sur le bouton.
+        [ Entree(s): positionSouris:tuple ]
+        [ Sortie(s): :bool ]
+        -> Gere l'interaction avec le bouton.
+        Retourne True si la souris est sur le bouton, False sinon.
         """
         interactionX = positionSouris[0] > self.position[0] and positionSouris[0] < self.position[0] + self.affichage.taille[0]
         interactionY = positionSouris[1] > self.position[1] and positionSouris[1] < self.position[1] + self.affichage.taille[1]
@@ -19,13 +22,18 @@ class BoutonRect:
 
     def MettreAJourCoeffInteraction(self, positionSouris:tuple) -> float:
         """
-        Met a jour le coeffcient de taille pour l'interaction selon la position de la souris 'positionSouris'.
+        [ Entree(s): positionSouris:tuple ]
+        [ Sortie(s): :float ]
+        -> Le bouton est agrandi lorsque la souris passe dessus.
+        Retourne le coefficient a appliquer a la taille du bouton pour l'interaction.
         """
         return 1 + int(self.Interagit(positionSouris)) * self.affichage.coeffInteraction
 
     def Charger(self, fenetre:display, positionSouris:tuple) -> None:
         """
-        Charge le bouton dans la fenetre 'fenetre', selon si la souris de position 'positionSouris' est sur le bouton.
+        [ Entree(s): fenetre:display, positionSouris:tuple ]
+        [ Sortie(s): N/A ]
+        -> Charge le bouton a l'ecran, en prenant en compte la position de la souris pour l'interaction.
         """
         coeffInteraction:float
         positionX:int
@@ -56,10 +64,12 @@ class BoutonRect:
         fenetre.blit(texteBouton, texteBoutonPosition)
 
     # CONSTRUCTEURS
-    def __init__(self, position:tuple, affichageBouton:AffichageBoutonRect, texte:str) -> None:
+    def __init__(self, position:tuple, texte:str):
         """
-        Un bouton rectangulaire.
+        [ Entree(s): position:tuple, texte:str ]
+        [ Sortie(s): :BoutonRect ]
+        -> Un bouton rectangulaire, avec une position centrale et un texte inscrit.
         """
         self.position = position
-        self.affichage = affichageBouton
+        self.affichage = AffichageBoutonRect()
         self.texte = texte

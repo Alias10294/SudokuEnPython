@@ -4,6 +4,9 @@ from FichierMenuABoutons import MenuABoutons
 from FichierPartie import Partie
 
 class Jeu:
+    """
+     Un jeu de sudoku genial !
+    """
     # CHAMPS
     fenetre:display
     tailleFenetre:tuple
@@ -16,10 +19,20 @@ class Jeu:
     couleurActuelle:tuple
 
     # METHODES
-    def CreerIdentifiant(self, choixJeu:int):
+    def CreerIdentifiant(self, choixJeu:int) -> str:
+        """
+        [ Entree(s): choixJeu:int ]
+        [ Sortie(s): :str ]
+        -> Retourne un identifiant qui permet de generer une partie de sudoku selon les parametres encryptes dans 'choixJeu'.
+.        """
         return str(choixJeu) + ("0" * 4) + "0" + ("0" * ((choixJeu % 100 // 10 + 1) ** 4))
 
-    def ModifierCouleur(self, couleur:tuple):
+    def ModifierCouleur(self, couleur:tuple) -> None:
+        """
+        [ Entree(s): couleur:tuple ]
+        [ Sortie(s): N/A ]
+        -> Modifie la couleur des textes dans le jeu a la couleur desiree.
+        """
         self.couleurActuelle = couleur
         self.menuDepart.affichageBouton.texteCouleur = couleur
         self.menuTailleGrille.affichageBouton.texteCouleur = couleur
@@ -32,7 +45,9 @@ class Jeu:
 
     def Jouer(self) -> None:
         """
-        Permet de jouer au jeu.
+        [ Entree(s): N/A ]
+        [ Sortie(s): N/A ]
+        -> Fonction principale, qui permet de jouer au jeu.
         """
         choixJeu:int
         identifiantPartie:str
@@ -95,9 +110,11 @@ class Jeu:
         font.quit()
 
     # CONSTRUCTEURS
-    def __init__(self) -> None:
+    def __init__(self):
         """
-        Un jeu de sudoku genial !
+        [ Entree(s): N/A ]
+        [ Sortie(s): :Jeu ]
+        -> Un jeu de sudoku.
         """
         self.tailleFenetre = (1536, 864)
         self.fenetre = display.set_mode(self.tailleFenetre)

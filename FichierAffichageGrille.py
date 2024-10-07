@@ -2,6 +2,9 @@
 from pygame import font
 
 class AffichageGrille:
+    """
+    Contient les valeurs par défaut d'affichage pour la classe Grille.
+    """
     # CHAMPS
     position:tuple
     taille:int = 748

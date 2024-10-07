@@ -19,14 +19,21 @@ class Partie:
     erreurs:Erreurs
 
     # METHODES
-    def ModifierCouleur(self, couleur:tuple):
+    def ModifierCouleur(self, couleur:tuple) -> None:
+        """
+        [ Entree(s): couleur:tuple ]
+        [ Sortie(s): N/A ]
+        -> Modifie la couleur de la police d'ecriture des nombres.
+        """
         bouton:BoutonCirc
 
         self.affichageGrille.policeCouleur = couleur
 
     def sourisSurGrille(self, positionSouris:tuple) -> bool:
         """
-        Verifie si la souris de position 'positionSouris' se trouve sur la grille de sudoku.
+        [ Entree(s): positionSouris:tuple ]
+        [ Sortie(s): :bool ]
+        -> Verifie si la souris de position 'positionSouris' se trouve sur la grille de sudoku.
         """ 
         sourisApresDebutGrilleX:bool
         sourisApresDebutGrilleY:bool
@@ -45,7 +52,9 @@ class Partie:
 
     def choisirCase(self, positionSouris:tuple) -> None:
         """
-        Determine la case ou la souris de position 'positionSouris' se trouve.
+        [ Entree(s): positionSouris:tuple ]
+        [ Sortie(s): N/A ]
+        -> Determine la case ou la souris de position 'positionSouris' se trouve.
         """
         i:int
         j:int
@@ -61,7 +70,9 @@ class Partie:
 
     def trouverPositionCase(self, caseCoordonnee:tuple) -> tuple:
         """
-        Trouve la position de la case en pixels.
+        [ Entree(s): caseCoordonnee:tuple ]
+        [ Sortie(s): :tuple ]
+        -> Retourne les coordonnees de la case en pixels.
         """
         caseDebutPositionX:int
         casePositionX:int
@@ -76,7 +87,9 @@ class Partie:
     
     def ChargerChiffre(self, fenetre:display, caseCoordonnee:tuple) -> None:
         """
-        Charge les chiffres de la case.
+        [ Entree(s): fenetre:display, caseCoordonnee:tuple ]
+        [ Sortie(s): N/A ]
+        -> Charge les chiffres de la case.
         """
         chiffre:Case
         casePosition:tuple
@@ -115,7 +128,9 @@ class Partie:
 
     def chargerCase(self, fenetre:display, caseCoordonnee:tuple) -> None:
         """
-        Charge une case de la grille de sudoku.
+        [ Entree(s): fenetre:display, caseCoordonnee:tuple ]
+        [ Sortie(s): N/A ]
+        -> Charge une case de la grille de sudoku.
         """
         casePosition:tuple
         rectCase:Rect
@@ -134,7 +149,9 @@ class Partie:
 
     def ChargerGrille(self, fenetre:display, tailleFenetre:tuple) -> None:
         """
-        Charge la grille de sudoku.
+        [ Entree(s): fenetre:display, tailleFenetre:tuple ]
+        [ Sortie(s): N/A ]
+        -> Charge la grille de sudoku.
         """
         rectGrille:Rect
         i:int
@@ -150,7 +167,9 @@ class Partie:
 
     def CreerBoutonsEdition(self) -> None:
         """
-        Cree les boutons des modes d'edition et de brouillon.
+        [ Entree(s): N/A ]
+        [ Sortie(s): N/A ]
+        -> Cree les boutons des modes d'edition et de brouillon.
         """
         self.boutonsEdition = []
         centreEdition = (197, 357)
@@ -163,14 +182,21 @@ class Partie:
 
     def ChargerBoutonsEdition(self, fenetre:display, positionSouris:tuple) -> None:
         """
-        Charge les boutons des modes d'edition et de brouillon.
+        [ Entree(s): fenetre:display, positionSouris:tuple ]
+        [ Sortie(s): N/A ]
+        -> Charge les boutons des modes d'edition et de brouillon.
         """
         bouton:BoutonCirc
 
         for bouton in self.boutonsEdition:
             bouton.Charger(fenetre, positionSouris)
 
-    def Charger(self, fenetre:display, tailleFenetre:tuple, positionSouris:tuple):
+    def Charger(self, fenetre:display, tailleFenetre:tuple, positionSouris:tuple) -> None:
+        """
+        [ Entree(s): feneter:display, tailleFenetre:tuple, positionSouris:tuple ]
+        [ Sortie(s): N/A ]
+        -> Charge la partie de sudoku a l'ecran.
+        """
         fenetre.blit(self.fond, (0, 0))
         self.ChargerGrille(fenetre, tailleFenetre)
         self.ChargerBoutonsEdition(fenetre, positionSouris)
@@ -178,10 +204,19 @@ class Partie:
         self.erreurs.Charger(fenetre)
         display.update()
 
-    def Jouer(self, fenetre, tailleFenetre) -> int:
+    def Jouer(self, fenetre:display, tailleFenetre:tuple) -> int:
         """
-        Joue une partie de jeu.
+        [ Entree(s): fenetre:display, tailleFenetre:tuple ]
+        [ Sortie(s): choixSortie:int ]
+        -> Joue une partie de jeu.
         """
+        fin:bool
+        touchesClavierPossibles:list
+        positionSouris:tuple
+        choixSortie:int
+        evenement:event
+        numeroEntre:str
+
         # Deroulement
         fin = False
         touchesClavierPossibles = [K_1, K_2, K_3, K_4, K_5, K_6, K_7, K_8, K_9, K_a, K_b, K_c, K_d, K_e, K_f, K_g][: self.grille.taille]
@@ -238,9 +273,11 @@ class Partie:
         return choixSortie 
 
     # CONSTRUCTEURS
-    def __init__(self, identifiant:str) -> None:
+    def __init__(self, identifiant:str):
         """
-        Une partie de jeu de sudoku, generee par un identifiant 'identifiant' comprennant la taille et difficulte de la grille a jouer.
+        [ Entree(s): identifiant:str ]
+        [ Sortie(s): :Partie ]
+        -> Une partie de jeu de sudoku, generee par un identifiant 'identifiant' comprennant la taille et difficulte de la grille a jouer.
         """
         departHorloge:float
 
