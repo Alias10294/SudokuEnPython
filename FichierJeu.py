@@ -34,14 +34,14 @@ class Jeu:
         -> Modifie la couleur des textes dans le jeu a la couleur desiree.
         """
         self.couleurActuelle = couleur
-        self.menuDepart.affichageBouton.texteCouleur = couleur
-        self.menuTailleGrille.affichageBouton.texteCouleur = couleur
-        self.menuDifficulte3x3.affichageBouton.texteCouleur = couleur
-        self.menuDifficulte4x4.affichageBouton.texteCouleur = couleur
-        self.menuRejouer.affichageBouton.texteCouleur = couleur
-        self.menuCharger.affichageBouton.texteCouleur = couleur
-        self.menuOptions.affichageBouton.texteCouleur = couleur
-        self.menuCouleur.affichageBouton.texteCouleur = couleur
+        self.menuDepart.ChangerCouleurBoutons(couleur)
+        self.menuTailleGrille.ChangerCouleurBoutons(couleur)
+        self.menuDifficulte3x3.ChangerCouleurBoutons(couleur)
+        self.menuDifficulte4x4.ChangerCouleurBoutons(couleur)
+        self.menuRejouer.ChangerCouleurBoutons(couleur)
+        self.menuCharger.ChangerCouleurBoutons(couleur)
+        self.menuOptions.ChangerCouleurBoutons(couleur)
+        self.menuCouleur.ChangerCouleurBoutons(couleur)
 
     def Jouer(self) -> None:
         """
@@ -118,12 +118,12 @@ class Jeu:
         """
         self.tailleFenetre = (1536, 864)
         self.fenetre = display.set_mode(self.tailleFenetre)
-        self.menuDepart = MenuABoutons(["JOUER", "OPTIONS", "QUITTER"], [1, 2, 3, ], "SUDOKU")
+        self.menuDepart = MenuABoutons(["JOUER", "OPTIONS", "QUITTER"], [1, 2, 3], "SUDOKU")
         self.menuTailleGrille = MenuABoutons(["2 X 2", "3 X 3", "4 X 4"], [11, 12, 13], "")
         self.menuDifficulte3x3 = MenuABoutons(["FACILE", "MOYEN", "DIFFICILE"], [121, 122, 123], "")
         self.menuDifficulte4x4 = MenuABoutons(["FACILE", "MOYEN", "DIFFICILE", "EXPERT"], [131, 132, 133, 134], "")
-        self.menuRejouer = MenuABoutons(["REJOUER", "DEPART", "QUITTER"], [1, 0, 4], "")
-        self.menuCharger = MenuABoutons([""], [4], "CHARGER")
+        self.menuRejouer = MenuABoutons(["REJOUER", "DEPART", "QUITTER"], [1, 0, 3], "")
+        self.menuCharger = MenuABoutons([""], [3], "CHARGER")
         self.menuOptions = MenuABoutons(["COULEUR", "DEPART"], [21, 0], "OPTIONS")
         self.menuCouleur = MenuABoutons(["GRIS", "VERT", "JAUNE", "ORANGE", "VIOLET"], [211, 212, 213, 214, 215], "COULEURS")
         self.couleurActuelle = (200, 200, 200)
