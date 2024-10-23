@@ -222,6 +222,8 @@ class Partie:
         touchesClavierPossibles = [K_1, K_2, K_3, K_4, K_5, K_6, K_7, K_8, K_9, K_a, K_b, K_c, K_d, K_e, K_f, K_g][: self.grille.taille]
         while not fin: 
             positionSouris = mouse.get_pos()
+            # Affichage
+            self.Charger(fenetre, tailleFenetre, positionSouris)
             # Evenements
             for evenement in event.get():
                 if evenement.type == QUIT: # Quitter le jeu avec la croix
@@ -261,8 +263,6 @@ class Partie:
                         self.boutonsEdition[1].active = True
                         self.boutonsEdition[0].active = False
                         self.modeEdition = False
-            # Affichage
-            self.Charger(fenetre, tailleFenetre, positionSouris)
             # Choix de sortie:
             if self.grille.TrouverCoordonneesCaseVide() == []:
                 fin = True
