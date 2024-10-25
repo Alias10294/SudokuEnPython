@@ -50,7 +50,7 @@ class MenuABoutons:
         [ Sortie(s): N/A ]
         -> Change les couleurs des boutons a celle desiree.
         """
-        for i in self.boutons:
+        for i in range(len(self.boutons)):
             self.boutons[i].affichage.texteCouleur = couleur
 
     def ChargerTitre(self, fenetre:display) -> None:
@@ -132,6 +132,7 @@ class MenuABoutons:
         -> Un menu comprenant des boutons et des sorties choisies.
         """
         self.fond = image.load("fond.png")
+        self.boutons = []
         self.texteBoutons = texteBoutons
         self.nombreBoutons = len(texteBoutons)
         self.espaceEntreBoutons = 50
