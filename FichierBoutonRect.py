@@ -59,6 +59,7 @@ class BoutonRect:
 
         # Affiche le texte du bouton
         policeBouton = font.Font(self.affichage.policeNom, int(self.affichage.policeTaille * coeffInteraction))
+        print(self.affichage.texteCouleur)
         texteBouton = policeBouton.render(self.texte, True, self.affichage.texteCouleur)
         texteBoutonPosition = texteBouton.get_rect(center = (positionX + tailleX / 2, positionY + tailleY / 2))
         fenetre.blit(texteBouton, texteBoutonPosition)

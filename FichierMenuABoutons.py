@@ -44,14 +44,14 @@ class MenuABoutons:
             self.boutons.append(BoutonRect(boutonPosition, self.texteBoutons[b]))
             boutonPositionY += AffichageBoutonRect().taille[1] + self.espaceEntreBoutons
     
-    def ChangerCouleurBoutons(self, couleur:tuple) -> None:
+    def ChangerCouleurBoutons(self, couleur:list) -> None:
         """
-        [ Entree(s): couleur:tuple ]
+        [ Entree(s): couleur:list ]
         [ Sortie(s): N/A ]
         -> Change les couleurs des boutons a celle desiree.
         """
-        for i in range(len(self.boutons)):
-            self.boutons[i].affichage.texteCouleur = couleur
+        for bouton in self.boutons:
+            bouton.affichage.texteCouleur = couleur
 
     def ChargerTitre(self, fenetre:display) -> None:
         """

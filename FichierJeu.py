@@ -16,7 +16,6 @@ class Jeu:
     menuDifficulte4x4:MenuABoutons
     partie:Partie
     menuRejouer:MenuABoutons
-    couleurActuelle:tuple
 
     # METHODES
     def CreerIdentifiant(self, choixJeu:int) -> str:
@@ -27,13 +26,12 @@ class Jeu:
 .        """
         return str(choixJeu) + ("0" * 4) + "0" + ("0" * ((choixJeu % 100 // 10 + 1) ** 4))
 
-    def ModifierCouleur(self, couleur:tuple) -> None:
+    def ModifierCouleur(self, couleur:list) -> None:
         """
-        [ Entree(s): couleur:tuple ]
+        [ Entree(s): couleur:list ]
         [ Sortie(s): N/A ]
         -> Modifie la couleur des textes dans le jeu a la couleur desiree.
         """
-        self.couleurActuelle = couleur
         self.menuDepart.ChangerCouleurBoutons(couleur)
         self.menuTailleGrille.ChangerCouleurBoutons(couleur)
         self.menuDifficulte3x3.ChangerCouleurBoutons(couleur)
@@ -71,20 +69,20 @@ class Jeu:
                     choixJeu = self.menuOptions.Jouer(self.fenetre, self.tailleFenetre)
                 case 21: # Choisir la couleur
                     choixJeu = self.menuCouleur.Jouer(self.fenetre, self.tailleFenetre)
-                case 211: # Couleur bleue
-                    self.ModifierCouleur((150, 150, 150))
+                case 211: # Couleur grise
+                    self.ModifierCouleur([150, 150, 150])
                     choixJeu = 2
                 case 212: # Couleur verte
-                    self.ModifierCouleur((71, 153, 31))
+                    self.ModifierCouleur([71, 153, 31])
                     choixJeu = 2
                 case 213: # Couleur jaune
-                    self.ModifierCouleur((230, 191, 0))
+                    self.ModifierCouleur([230, 191, 0])
                     choixJeu = 2
                 case 214: # Couleur orange
-                    self.ModifierCouleur((217, 108, 0))
+                    self.ModifierCouleur([217, 108, 0])
                     choixJeu = 2
                 case 215: # Couleur violette
-                    self.ModifierCouleur((91, 17, 166))
+                    self.ModifierCouleur([91, 17, 166])
                     choixJeu = 2
                 case 3: # Quitter le jeu
                     choixJeu = -1
@@ -104,7 +102,6 @@ class Jeu:
                 # [8:]: numeros de la grille
                 identifiantPartie = self.CreerIdentifiant(choixJeu)
                 self.partie = Partie(identifiantPartie)
-                self.partie.ModifierCouleur(self.couleurActuelle)
                 choixJeu = self.partie.Jouer(self.fenetre, self.tailleFenetre)
         quit()
         font.quit()
@@ -126,4 +123,3 @@ class Jeu:
         self.menuCharger = MenuABoutons([""], [3], "CHARGER")
         self.menuOptions = MenuABoutons(["COULEUR", "DEPART"], [21, 0], "OPTIONS")
         self.menuCouleur = MenuABoutons(["GRIS", "VERT", "JAUNE", "ORANGE", "VIOLET"], [211, 212, 213, 214, 215], "COULEURS")
-        self.couleurActuelle = (200, 200, 200)
