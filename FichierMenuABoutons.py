@@ -50,8 +50,8 @@ class MenuABoutons:
         [ Sortie(s): N/A ]
         -> Change les couleurs des boutons a celle desiree.
         """
-        for bouton in self.boutons:
-            bouton.affichage.texteCouleur = couleur
+        for i in range(len(self.boutons)):
+            self.boutons[i].ChangerCouleur(couleur)
 
     def ChargerTitre(self, fenetre:display) -> None:
         """
@@ -79,13 +79,13 @@ class MenuABoutons:
         fenetre.blit(self.fond, (0, 0)) # Image de fond
         self.ChargerTitre(fenetre) 
 
-        for bouton in self.boutons: 
-            bouton.Charger(fenetre, positionSouris) # Boutons du menu
+        for i in range(len(self.boutons)): 
+            self.boutons[i].Charger(fenetre, positionSouris) # Boutons du menu
         display.update()
     
-    def Jouer(self, fenetre:display, tailleFenetre:tuple) -> int:
+    def Jouer(self, fenetre:display) -> int:
         """
-        [ Entree(s): fenetre:display, tailleFenetre:tuple ]
+        [ Entree(s): fenetre:display ]
         [ Sortie(s): choixSortie:int ]
         -> Permet de jouer le menu.
         """
@@ -93,9 +93,6 @@ class MenuABoutons:
         evenement:event
         positionSouris:tuple
         choixSortie:int
-
-        # Creation des boutons
-        self.CreerBoutons(tailleFenetre)
         
         # Deroulement 
         fin = False
@@ -125,17 +122,17 @@ class MenuABoutons:
         return choixSortie
 
     # CONSTRUCTEURS
-    def __init__(self, texteBoutons:list, choixSorties:list, titreTexte:str):
+    def __init__(self, texteBoutons:list, choixSorties:list, titreTexte:str, tailleFenetre:tuple):
         """
         [ Entree(s): texteBoutons:list, choixSorties:list, titreTexte:str ]
         [ Sortie(s): :MenuABoutons ]
         -> Un menu comprenant des boutons et des sorties choisies.
         """
         self.fond = image.load("fond.png")
-        self.boutons = []
         self.texteBoutons = texteBoutons
         self.nombreBoutons = len(texteBoutons)
         self.espaceEntreBoutons = 50
+        self.CreerBoutons(tailleFenetre)
         self.boutonTouchesClavier = [K_1, K_2, K_3, K_4, K_5, K_6, K_8, K_9][:self.nombreBoutons]
         self.choixSorties = choixSorties
         self.affichageTitre = AffichageTitre()

@@ -9,6 +9,10 @@ class BoutonRect:
     affichage:AffichageBoutonRect
 
     # METHODES
+    def ChangerCouleur(self, couleur:list) -> None:
+        self.affichage.texteCouleur = couleur
+        print(self.affichage.texteCouleur)
+
     def Interagit(self, positionSouris:tuple) -> bool:
         """
         [ Entree(s): positionSouris:tuple ]
@@ -46,6 +50,7 @@ class BoutonRect:
         texteBouton:Surface
         texteBoutonPosition:Rect
 
+        print(self.affichage.texteCouleur)
         # Affiche la forme du bouton
         coeffInteraction = self.MettreAJourCoeffInteraction(positionSouris)
         positionX = self.position[0] - (coeffInteraction - 1) * self.affichage.taille[0] / 2
@@ -59,7 +64,6 @@ class BoutonRect:
 
         # Affiche le texte du bouton
         policeBouton = font.Font(self.affichage.policeNom, int(self.affichage.policeTaille * coeffInteraction))
-        print(self.affichage.texteCouleur)
         texteBouton = policeBouton.render(self.texte, True, self.affichage.texteCouleur)
         texteBoutonPosition = texteBouton.get_rect(center = (positionX + tailleX / 2, positionY + tailleY / 2))
         fenetre.blit(texteBouton, texteBoutonPosition)
