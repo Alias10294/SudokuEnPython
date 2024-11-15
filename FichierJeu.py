@@ -74,7 +74,6 @@ class Jeu:
                     choixJeu = 2
                 case 212: # Couleur verte
                     self.ModifierCouleur([71, 153, 31])
-                    print(choixJeu)
                     choixJeu = 2
                 case 213: # Couleur jaune
                     self.ModifierCouleur([230, 191, 0])
@@ -89,10 +88,10 @@ class Jeu:
                     choixJeu = -1
                 case 51: # Finir une partie gagnée
                     self.menuRejouer.titreTexte = "PARTIE GAGNEE"
-                    choixJeu = self.menuRejouer.Jouer(self.tailleFenetre)
+                    choixJeu = self.menuRejouer.Jouer(self.fenetre)
                 case 52: # Finir une partie perdue
                     self.menuRejouer.titreTexte = "PARTIE PERDUE"
-                    choixJeu = self.menuRejouer.Jouer(self.tailleFenetre)
+                    choixJeu = self.menuRejouer.Jouer(self.fenetre)
             if (choixJeu // 100) == 1:
                 # Indices dans l'identifiant:
                 # [0]: mode de generation (1: cree, 2: charge)
@@ -103,7 +102,7 @@ class Jeu:
                 # [8:]: numeros de la grille
                 identifiantPartie = self.CreerIdentifiant(choixJeu)
                 self.partie = Partie(identifiantPartie)
-                choixJeu = self.partie.Jouer(self.tailleFenetre)
+                choixJeu = self.partie.Jouer(self.fenetre, self.tailleFenetre)
         quit()
         font.quit()
 
