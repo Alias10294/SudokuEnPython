@@ -11,7 +11,6 @@ class BoutonRect:
     # METHODES
     def ChangerCouleur(self, couleur:list) -> None:
         self.affichage.texteCouleur = couleur
-        print(self.affichage.texteCouleur)
 
     def Interagit(self, positionSouris:tuple) -> bool:
         """
@@ -50,7 +49,6 @@ class BoutonRect:
         texteBouton:Surface
         texteBoutonPosition:Rect
 
-        print(self.affichage.texteCouleur)
         # Affiche la forme du bouton
         coeffInteraction = self.MettreAJourCoeffInteraction(positionSouris)
         positionX = self.position[0] - (coeffInteraction - 1) * self.affichage.taille[0] / 2
